@@ -77,13 +77,13 @@
    
    
    
-   <body oncontextmenu="return false" style="text-align: center; background-color: #FFFBEB;">
+   <body oncontextmenu="return false" style="text-align: center; background-color: #FFFBEB;" onselectstart="return false">
         <div class="control"><p style="font-size: 4px;"></p><p style="margin-bottom: 0px;">원천도서관 출입자 관리 시스템</p>
         <span style="font-size: 1.3rem; font-family: 'Cafe24Shiningstar';" id="random">니코니코니</span>
     </div>
         <div class="box1">
             <br>
-            <h2>신성중학교 도서관 이용자</h2>
+            <h2 id="midmain">신성중학교 도서관 이용자</h2>
             <p class="num" style="font-size:3rem;"><span id="mid1">0</span>명</p>
             <p>1을 눌러 입장, 2를 눌러 퇴장</p>
             <table style="margin: 0 auto; text-align: center;">
@@ -112,7 +112,7 @@
         <div class="box2">
 
 			<br>
-            <h2>신성고등학교 도서관 이용자</h2>
+            <h2 id="highmain">신성고등학교 도서관 이용자</h2>
             <p class="num" style="font-size:3rem;"><span id="high1">0</span>명</p>
             <p>3을 눌러 입장, 4를 눌러 퇴장</p>
             <table style="margin: 0 auto; text-align: center;">
@@ -175,7 +175,11 @@
 					}
 				}
 			document.onkeydown = noEvent;*/
-			let sValue = ["내가 인생을 알게 된 것은 사람과 접촉해서가 아니라 책과 접하였기 때문이다.-A. 프랜스-","사람은 책을 만들고 책은 사람을 만든다.- 신용호 -","책은 한 권 한 권이 하나의 세계다.- W. 워즈워스 -","독서란 자기의 머리가 남의 머리로 생각하는 일이다. - 쇼펜하우어 -","니코니코니 -야자와 니코-","좋은 책을 읽는 것은 과거의 가장 뛰어난 사람들과 대화를 나누는 것과 같다. - 데카르트 -","시간이 없어서 공부하지 못한다고 하는 사람은 시간이 있어도 공부하지 못한다. - 회남자 -","독서는 충실한 인간을 만들고, 회의는 의지가 굳센 인간을 만들며, 쓰기는 정확한 인간을 만든다. - 베이컨 -","가난한 자는 책으로 말미암아 부자가 되고 부자는 책으로 말미암아 존귀해진다. - 고문진보 -","독서한 사람은 비록 걱정이 있으되 뜻이 상하지 않는다. - 순자 -","독서같이 값싸게 주어지는 영속적인 쾌락은 또 없다. - 몽테뉴 -"];
+			document.getElementById("midmain").innerHTML = today.getMonth() +1 + "월 "
++ today.getDate() + "일 신성중학교 도서관 이용자";
+			document.getElementById("highmain").innerHTML = today.getMonth()+1 + "월 "
++ today.getDate() + "일 신성고등학교 도서관 이용자";
+			let sValue = ["내가 인생을 알게 된 것은 사람과 접촉해서가 아니라 책과 접하였기 때문이다.-A. 프랜스-","사람은 책을 만들고 책은 사람을 만든다.- 신용호 -","책은 한 권 한 권이 하나의 세계다.- W. 워즈워스 -","독서란 자기의 머리가 남의 머리로 생각하는 일이다. - 쇼펜하우어 -","니코니코니 -야자와 니코-","좋은 책을 읽는 것은 과거의 가장 뛰어난 사람들과 대화를 나누는 것과 같다. - 데카르트 -","시간이 없어서 공부하지 못한다고 하는 사람은 시간이 있어도 공부하지 못한다. - 회남자 -","담론은 재치있는 사람을, 필기는 정확한 사람을, 독서는 완성된 사람을 만든다. - 베이컨 -","가난한 자는 책으로 말미암아 부자가 되고 부자는 책으로 말미암아 존귀해진다. - 고문진보 -","독서한 사람은 비록 걱정이 있으되 뜻이 상하지 않는다. - 순자 -","독서같이 값싸게 주어지는 영속적인 쾌락은 또 없다. - 몽테뉴 -","나는 한 시간의 독서로 누그러들지 않는 어떤 슬픔도 알지 못한다. - 몽테스키외 -","100년이 지나도 200년이 지나도 결코 컴퓨터가 책을 대체할 수 없다. -빌 게이츠-","이거 만드느라 방학 마지막 날을 소비했다 -박성현-"];
 			let sPick = Math.floor(Math.random() * sValue.length);
 			document.getElementById("random").innerHTML = sValue[sPick];
 			
@@ -258,7 +262,8 @@ var myChart = new Chart(context, {
 	data: { // 차트에 들어갈 데이터
 		labels: [
 			//x 축
-			dayforcode.getDate() - 4 + '일', dayforcode.getDate() - 3 + '일', dayforcode.getDate() - 2 + '일', dayforcode.getDate() - 1 + '일', dayforcode.getDate() + '일'
+			//dayforcode.getDate() - 4 + '일', dayforcode.getDate() - 3 + '일', dayforcode.getDate() - 2 + '일', dayforcode.getDate() - 1 + '일', dayforcode.getDate() + '일'
+			'4일 전', '3일 전', '2일 전', '어제', '오늘'
 		],
 		datasets: [
 			{ //데이터
@@ -309,7 +314,7 @@ var myChart = new Chart(context, {
 	data: { // 차트에 들어갈 데이터
 		labels: [
 			//x 축
-			dayforcode.getDate() - 4 + '일', dayforcode.getDate() - 3 + '일', dayforcode.getDate() - 2 + '일', dayforcode.getDate() - 1 + '일', dayforcode.getDate() + '일'
+			'4일 전', '3일 전', '2일 전', '어제', '오늘'
 		],
 		datasets: [
 			{ //데이터
