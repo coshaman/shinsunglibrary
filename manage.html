@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도서관 출입 현황</title>
+    <title>관리자 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
@@ -27,43 +27,18 @@
             font-weight: 700;
             font-style: normal;
         }
-		@font-face {
-			font-family: 'BookkMyungjo-Bd';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
-			font-weight: 700;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'NanumSquareNeo-Variable';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: '양진체';
-			src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'TAEBAEKmilkyway';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
-			font-weight: normal;
-			font-style: normal;
-		}
         .control{
             width:100%;
-            height: 7vh;
+            height:9vh;
             text-align: center;
-            font-family: 'BookkMyungjo-Bd';
-            font-size: 6vh;
+            font-family: 'Dosuguan';
+            font-size: 1.6rem;
             line-height: 1.7rem;
         }
         .box1 {
              float:left; 
-             width:47%; 
-			 padding-bottom: 3vh;
-			 margin-left: 2.5%;
+             width:49.5%; 
+             height:83vh;
             text-align: center;
             border-style:solid;
             border-width: 5px;
@@ -74,10 +49,9 @@
              
         .box2 {
              display:inline-block; 
-             width:47%; 
+             width:49.5%; 
+             height:83vh; 
              margin-left:1%;
-			 margin-right: 2.5%;
-			 padding-bottom: 3vh;
             text-align: center;
             border-style:solid;
             border-width: 5px;
@@ -87,15 +61,13 @@
         }
 
         .num{
-            font-family: '양진체';
-			line-height: 0.8;
+            font-size: 1.4rem;
+            font-family: 'MonoplexKRNerd-Bold';
 
         }
 
         h2 {
-            font-family: 'NanumSquareNeo-Variable';
-			margin: 0px 0px 0px 0px; line-height: 100%;
-			font-weight: 800;
+            font-family: 'Dosuguan';
         }
    </style>
 
@@ -106,17 +78,15 @@
    
    
    <body oncontextmenu="return false" style="text-align: center; background-color: #FFFBEB;" onselectstart="return false">
-        <br><div class="control"><p style="margin-bottom: 0px;"><a href="manage.html" target="_blank" style="text-decoration: none; color: black;">원천도서관 출입자 관리 시스템</a></p>
-        
+        <div class="control"><p style="font-size: 4px;"></p><p style="margin-bottom: 0px;">원천도서관 출입자 관리 시스템</p>
+        <span style="font-size: 1.3rem; font-family: 'Cafe24Shiningstar'; display:none;" id="random">니코니코니</span>
     </div>
         <div class="box1">
             <br>
             <h2 id="midmain">신성중학교 도서관 이용자</h2>
-			<br><br><br><br>
-            <p class="num" style="font-size:50vh;"><span id="mid1">0</span></p><span style="font-size: 1.6rem; line-height: 0%;">Today <span id="mid2">0</span>명</span>
-			
-            <h2>1을 눌러 입장</h2>
-            <table style="margin: 0 auto; text-align: center;display:none;">
+            <p class="num" style="font-size:7rem; display:none;"><span id="mid1">0</span>명</p>
+            
+            <table style="margin: 0 auto; text-align: center;">
                 <tr>
                     <td>
                         <h2>Today</h2>
@@ -131,6 +101,8 @@
             </table>
             
             
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+			<canvas id="myChart" width="50%" height="20vh"></canvas>
 
 			
         </div>
@@ -141,13 +113,13 @@
 
 			<br>
             <h2 id="highmain">신성고등학교 도서관 이용자</h2>
-			<br><br><br><br>
-            <p class="num" style="font-size:50vh;"><span id="high1">0</span></p><span style="font-size: 1.6rem; line-height: 0%;">Today <span id="high2">0</span>명</span>
-			
-            <h2>3을 눌러 입장</h2>
-            <table style="margin: 0 auto; text-align: center;display:none;">
+            <p class="num" style="font-size:7rem; display:none;"><span id="high1">0</span>명</p>
+            
+            <table style="margin: 0 auto; text-align: center;">
                 <tr>
                     <td>         
+                        <h2>Today</h2>
+                        <p class="num"><span id="high2">0</span>명</p>
                     </td>
                     <td><div style="width: 3vw;"></div></td>
                     <td>
@@ -158,9 +130,11 @@
             </table>
             
             
+			<canvas id="myChart2" width="50%" height="20vh"></canvas>
 		</div>
-		<a onclick="down();"><span style="font-size: 1.8rem; font-family: 'TAEBAEKmilkyway';font-weight: 900; color: black; text-decoration: none;" id="random">새로고침 후 이 메시지가 보인다면 kmcha72@gmail.com으로 오류신고 바랍니다.</span></a>
-<!--
+<a onclick="down();">
+	<img style="height: 5vh; margin: 0 auto;" src="data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNi44NjQgMy40MjRjLjUwMi0uMzAxIDEuMTM2LjA2MyAxLjEzNi42NDIgMCAuMjY0LS4xMzguNTA5LS4zNjUuNjQ0LTIuNDc2IDEuNDg2LTQuMTM1IDQuMTk3LTQuMTM1IDcuMjkyIDAgNC42OTEgMy44MDggOC40OTggOC40OTggOC40OThzOC40OTctMy44MDcgOC40OTctOC40OThjMC0zLjA5My0xLjY1Ni01LjgwMy00LjEzMS03LjI4OS0uMjI1LS4xMzYtLjM2NC0uMzgtLjM2NC0uNjQ0IDAtLjU4Mi42MzUtLjk0MyAxLjEzNy0uNjQyIDIuOTEgMS43NDggNC44NTggNC45MzYgNC44NTggOC41NzUgMCA1LjUxOS00LjQ3OSA5Ljk5OC05Ljk5NyA5Ljk5OHMtOS45OTgtNC40NzktOS45OTgtOS45OThjMC0zLjY0MSAxLjk1MS02LjgzIDQuODY0LTguNTc4em0uODMxIDguNTgyczIuMDI1IDIuMDIxIDMuNzc5IDMuNzc0Yy4xNDcuMTQ3LjMzOS4yMi41My4yMi4xOTIgMCAuMzg0LS4wNzMuNTMxLS4yMiAxLjc1My0xLjc1MiAzLjc3OS0zLjc3NSAzLjc3OS0zLjc3NS4xNDUtLjE0NS4yMTctLjMzNi4yMTctLjUyNiAwLS4xOTItLjA3NC0uMzg0LS4yMjEtLjUzMS0uMjkyLS4yOTMtLjc2Ni0uMjk0LTEuMDU2LS4wMDRsLTIuNSAyLjQ5OXYtMTAuNjkzYzAtLjQxNC0uMzM2LS43NS0uNzUtLjc1cy0uNzUuMzM2LS43NS43NXYxMC42OTNsLTIuNDk4LTIuNDk4Yy0uMjg5LS4yODktLjc2Mi0uMjg2LTEuMDU0LjAwNi0uMTQ3LjE0Ny0uMjIxLjMzOS0uMjIyLjUzMSAwIC4xOS4wNzEuMzguMjE1LjUyNHoiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==">
+</a><!--
 <a href="https://coshaman.github.io/portfolio/index.html" target="_blank" style="text-decoration: none;">
 	&copy; 박성현
 </a>-->
@@ -218,43 +192,9 @@
 			let sValue = ["내가 인생을 알게 된 것은 사람과 접촉해서가 아니라 책과 접하였기 때문이다.-A. 프랜스-","사람은 책을 만들고 책은 사람을 만든다.- 신용호 -","책은 한 권 한 권이 하나의 세계다.- W. 워즈워스 -","독서란 자기의 머리가 남의 머리로 생각하는 일이다. - 쇼펜하우어 -","니코니코니 -야자와 니코-","좋은 책을 읽는 것은 과거의 가장 뛰어난 사람들과 대화를 나누는 것과 같다. - 데카르트 -","시간이 없어서 공부하지 못한다고 하는 사람은 시간이 있어도 공부하지 못한다. - 회남자 -","담론은 재치있는 사람을, 필기는 정확한 사람을, 독서는 완성된 사람을 만든다. - 베이컨 -","가난한 자는 책으로 말미암아 부자가 되고 부자는 책으로 말미암아 존귀해진다. - 고문진보 -","독서한 사람은 비록 걱정이 있으되 뜻이 상하지 않는다. - 순자 -","독서같이 값싸게 주어지는 영속적인 쾌락은 또 없다. - 몽테뉴 -","나는 한 시간의 독서로 누그러들지 않는 어떤 슬픔도 알지 못한다. - 몽테스키외 -","100년이 지나도 200년이 지나도 결코 컴퓨터가 책을 대체할 수 없다. -빌 게이츠-","이거 만드느라 방학 마지막 날을 소비했다 -박성현-","오늘 걸으면 내일은 달려야 한다.","평범하게 살고 싶지 않다면 어째서 평범하게 노력하는가?","내가 꿈을 이루면 난 다시 누군가의 꿈이 된다","난 혼자 있을 때 가장 외롭지 않았다 - 고토 히토리 -","The will of man is his happiness - Friedrich von schiller -","This too shall pass away - Abraham Lincoln -","Life is unfair, get used to it - 빌 게이츠 -","어제보다 나은 내일은 토요일 뿐이다","꿈은 도망가지 않아. 도망가는 것은 언제나 나 자신이지 - 신형만 -","계획대로! - 야가미 라이토 -","보려고 하지 않으면 볼 수 없게 되는거야 - 키리사키 치토게 -","누구도 미래를 받아들일 수 없어 - 아케미 호무라 -","너라면 이 운명을 뒤바꿀 수 있어. 너에겐 그럴 자격이 있어. - 큐베 -"];
 			let sPick = Math.floor(Math.random() * sValue.length);
 			document.getElementById("random").innerHTML = sValue[sPick];
-
 			
 		
-				window.addEventListener('keyup', count);
-				function count(event) {
-					
-					if (event.keyCode == 49) {
-						document.getElementById("mid1").innerHTML = (document.getElementById("mid1").innerHTML * 1) + 1;
-						document.getElementById("mid2").innerHTML = (document.getElementById("mid2").innerHTML * 1) + 1;
-						sPick = Math.floor(Math.random() * sValue.length);
-						document.getElementById("random").innerHTML = sValue[sPick];
-						mid[today.toLocaleDateString()] += 1;
-						localStorage.setItem("mid", JSON.stringify(mid));
-					}
-					if (event.keyCode == 50 && document.getElementById("mid1").innerHTML * 1 >= 0) {
-						document.getElementById("mid1").innerHTML = (document.getElementById("mid1").innerHTML * 1) - 1;
-					}
-					if (event.keyCode == 51) {
-						document.getElementById("high1").innerHTML = (document.getElementById("high1").innerHTML * 1) + 1;
-						document.getElementById("high2").innerHTML = (document.getElementById("high2").innerHTML * 1) + 1;
-						sPick = Math.floor(Math.random() * sValue.length);
-						document.getElementById("random").innerHTML = sValue[sPick];
-						high[today.toLocaleDateString()] += 1;
-						localStorage.setItem("high", JSON.stringify(high));
-					}
-					if (event.keyCode == 52  && document.getElementById("high1").innerHTML * 1 >= 0) {
-						
-						document.getElementById("high1").innerHTML = (document.getElementById("high1").innerHTML * 1) - 1;
-					}
-		
-					if(document.getElementById("mid1").innerHTML * 1 < 0){
-						document.getElementById("mid1").innerHTML = 0;	
-					}
-					if(document.getElementById("high1").innerHTML * 1 < 0){
-						document.getElementById("high1").innerHTML = 0;	
-					}
-				}
+				
 
 				function down(){
 					document.getElementById("downtxt").innerHTML = "";
@@ -289,6 +229,108 @@
 			</script>
 <div style="display:none;" id="downtxt"></div>
 
+<script>
+	let dayforcode = new Date();
+var context = document
+	.getElementById('myChart')
+	.getContext('2d');
+var myChart = new Chart(context, {
+	type: 'line', // 차트의 형태
+	data: { // 차트에 들어갈 데이터
+		labels: [
+			//x 축
+			//dayforcode.getDate() - 4 + '일', dayforcode.getDate() - 3 + '일', dayforcode.getDate() - 2 + '일', dayforcode.getDate() - 1 + '일', dayforcode.getDate() + '일'
+			'4일 전', '3일 전', '2일 전', '어제', '오늘'
+		],
+		datasets: [
+			{ //데이터
+				label: '이용자 수', //차트 제목
+				fill: true, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+				data: [
+				mid[(new Date(dayforcode.setDate(dayforcode.getDate() - 4))).toLocaleDateString()],mid[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],mid[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],mid[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],mid[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()] //x축 label에 대응되는 데이터 값
+				],
+				borderColor: [
+					//경계선 색상
+					'blue'
+				],
+				borderWidth: 5 //경계선 굵기
+			}/* ,
+			{
+				label: 'test2',
+				fill: false,
+				data: [
+					8, 34, 12, 24
+				],
+				backgroundColor: 'rgb(157, 109, 12)',
+				borderColor: 'rgb(157, 109, 12)'
+			} */
+		]
+	},
+	options: {
+		scales: {
+			yAxes: [
+				{
+					ticks: {
+						beginAtZero: false
+					}
+				}
+			]
+		}
+	}
+});
+  
+</script>
+
+<script>
+	dayforcode = new Date();
+var context = document
+	.getElementById('myChart2')
+	.getContext('2d');
+var myChart = new Chart(context, {
+	type: 'line', // 차트의 형태
+	data: { // 차트에 들어갈 데이터
+		labels: [
+			//x 축
+			'4일 전', '3일 전', '2일 전', '어제', '오늘'
+		],
+		datasets: [
+			{ //데이터
+				label: '이용자 수', //차트 제목
+				fill: true, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
+				data: [
+				high[(new Date(dayforcode.setDate(dayforcode.getDate() - 4))).toLocaleDateString()],high[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],high[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],high[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()],high[(new Date(dayforcode.setDate(dayforcode.getDate() + 1))).toLocaleDateString()] //x축 label에 대응되는 데이터 값
+				],
+				borderColor: [
+					//경계선 색상
+					'red'
+				],
+				borderWidth: 5 //경계선 굵기
+			}/* ,
+			{
+				label: 'test2',
+				fill: false,
+				data: [
+					8, 34, 12, 24
+				],
+				backgroundColor: 'rgb(157, 109, 12)',
+				borderColor: 'rgb(157, 109, 12)'
+			} */
+		]
+	},
+	options: {
+		scales: {
+			yAxes: [
+				{
+					ticks: {
+						beginAtZero: false
+					}
+				}
+			]
+		}
+	}
+});
+  
+</script>
    </body>
 </body>
 </html>
