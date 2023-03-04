@@ -172,7 +172,9 @@
 		<script>
 			let today = new Date();
 			let yesterday = new Date();
+			let threeday = new Date();
 			yesterday = new Date(yesterday.setDate(yesterday.getDate() - 1));
+			threeday = new Date(threeday.setDate(threeday.getDate() - 2));
 			let mid = localStorage.getItem("mid");
 			let high = localStorage.getItem("high");
 			if(isNaN(mid) != true) { //로컬 세팅
@@ -185,6 +187,7 @@
 			if(typeof mid[today.toLocaleDateString()] == "undefined"){mid[today.toLocaleDateString()] = 0;}
 			
 			if(typeof mid[yesterday.toLocaleDateString()] == "undefined"){mid[yesterday.toLocaleDateString()] = 0;}
+			if(typeof mid[threeday.toLocaleDateString()] == "undefined"){mid[threeday.toLocaleDateString()] = 0;}
 			
 			
 			document.getElementById("mid2").innerHTML = mid[today.toLocaleDateString()]; //사용자 수 세팅
@@ -200,6 +203,7 @@
 			if(typeof high[today.toLocaleDateString()] == "undefined"){high[today.toLocaleDateString()] = 0;}
 			
 			if(typeof high[yesterday.toLocaleDateString()] == "undefined"){high[yesterday.toLocaleDateString()] = 0;}
+			if(typeof high[threeday.toLocaleDateString()] == "undefined"){high[threeday.toLocaleDateString()] = 0;}
 			
 			document.getElementById("high2").innerHTML = high[today.toLocaleDateString()]; //사용자 수 세팅
 			document.getElementById("high3").innerHTML = high[yesterday.toLocaleDateString()];
