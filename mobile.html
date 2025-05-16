@@ -11,13 +11,15 @@
  <script type="text/javascript" language="JavaScript">
 
 var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'Windows CE;', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson', 'Mobile', 'Symbian', 'Opera Mobi', 'Opera Mini', 'IEmobile');
-
+var abcdefg = 0;
 for (var word in mobileKeyWords){
 	if (navigator.userAgent.match(mobileKeyWords[word]) != null){
+		abcdefg = 1;
 		break;
 	}
-	window.location.href = "index.html";
+	
 }
+	 if(abcdefg == 0){window.location.href = "index.html";}
 
 </script>
     <style>
